@@ -9,13 +9,27 @@ class Timetable extends Model
 {
     use HasFactory;
 
-    public $table = 'timetables';
-
     protected $fillable = [
-       'subject_id',
-       'day_id',
-       'hall_id',
-       'user_id',
-       'group_id',
+        'subject_id',
+        'group_id',
+        'hall_id',
+        'day',
+        'start_time',
+        'end_time'
     ];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+    public function hall()
+    {
+        return $this->belongsTo(Hall::class);
+    }
 }

@@ -12,7 +12,8 @@ class TimetableController extends Controller
      */
     public function index()
     {
-        //
+        $timetables = Timetable::with(['subject', 'group', 'hall'])->get();
+        return view('timetables.index', compact('timetables'));
     }
 
     /**

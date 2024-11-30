@@ -222,6 +222,14 @@
               <p>Forms</p>
             </a>
           </li>
+
+          <!-- List of Students -->
+          <li class="nav-item">
+                <a href="{{ route('students.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Students</p>
+                </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -251,7 +259,9 @@
 
     <!-- Main content -->
     <section class="content">
-      
+        <div class="container">
+            @yield('content')
+        </div>
     </section>
     <!-- /.content -->
   </div>

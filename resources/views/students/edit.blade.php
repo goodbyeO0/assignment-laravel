@@ -23,7 +23,7 @@
      
        <form action="{{ route('students.update',$student->id) }}" method="POST">
            @csrf
-           @method('PUT')
+           @method('UPDATE')
       
             <div class="row">
                <input type="hidden" name="id" value="{{ $student->id }}"> <br/>

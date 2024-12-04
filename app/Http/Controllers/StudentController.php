@@ -44,11 +44,37 @@ class StudentController extends Controller
         return view('students.show', compact('student'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $student)
     {
         return view('students.edit', compact('student'));
     }
+
+    public function update(Request $request, User $student)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $student->name = $request->name;
+        $student->email = $request->email;
+        
+        // Only update password if it's provided
+        if ($request->filled('password')) {
+            $student->password = Hash::make($request->password);
+        }
+        
+        $student->save();
+
+        return redirect()->route('students.index')
+                        ->with('success', 'Student updated successfully');
+    }
+
+    public function destroy(User $student) {
+        $student->delete();
+  
+        return redirect()->route('students.index')
+                        ->with('success','Student deleted successfully');
+    }
+    
 }

@@ -14,5 +14,7 @@ class Group extends Model
     protected $fillable = [
         'name',
         'part',
+        'capacity',
+        'department'
     ];
 }

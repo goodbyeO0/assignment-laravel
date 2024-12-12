@@ -27,9 +27,9 @@
     @foreach ($subjects as $subject)
     <tr>
         <td>{{ $subject->id }}</td>
-        <td>{{ $subject->code }}</td>
-        <td>{{ $subject->name }}</td>
-        <td>{{ $subject->credit_hours }}</td>
+        <td>{{ $subject->subject_code }}</td>
+        <td>{{ $subject->subject_name }}</td>
+        <td>{{ $subject->lecturer_name }}</td>
         <td>
             <form action="{{ route('subjects.destroy',$subject->id) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('subjects.show',$subject->id) }}">Show</a>

@@ -21,7 +21,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subjects.create');
     }
 
     /**
@@ -29,7 +29,17 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'subject_code' => 'required|unique:subjects',
+            'subject_name' => 'required',
+            'lecturer_name' => 'required',
+        ]);
+
+        Subject::create($request->all());
+
+        return redirect()->route('subjects.index')
+                         ->with('success', 'Subject created successfully.');
     }
 
     /**
@@ -37,7 +47,7 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        //
+        return view('subjects.show', compact('subject'));
     }
 
     /**
@@ -45,7 +55,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return view('subjects.edit', compact('subject'));
     }
 
     /**
@@ -53,7 +63,16 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        //
+        $request->validate([
+            'subject_code' => 'required|unique:subjects,subject_code,' . $subject->id,
+            'subject_name' => 'required',
+            'lecturer_name' => 'required',
+        ]);
+
+        $subject->update($request->all());
+
+        return redirect()->route('subjects.index')
+                         ->with('success', 'Subject updated successfully.');
     }
 
     /**
@@ -61,6 +80,9 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+
+        return redirect()->route('subjects.index')
+                         ->with('success', 'Subject deleted successfully.');
     }
 }

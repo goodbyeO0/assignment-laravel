@@ -12,11 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('age')->nullable()->after('name');
+            // Check if the 'age' column does not exist before adding it
+            if (!Schema::hasColumn('users', 'age')) {
+                $table->string('age')->nullable()->after('name');
+            }
         });
 
         Schema::table('subjects', function (Blueprint $table) {
-            $table->string('lecturer_name')->nullable()->after('subject_name');
+            // Check if the 'lecturer_name' column does not exist before adding it
+            if (!Schema::hasColumn('subjects', 'lecturer_name')) {
+                $table->string('lecturer_name')->nullable()->after('subject_name');
+            }
         });
     }
 
@@ -26,11 +32,17 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('age');
+            // Check if the 'age' column exists before dropping it
+            if (Schema::hasColumn('users', 'age')) {
+                $table->dropColumn('age');
+            }
         });
 
         Schema::table('subjects', function (Blueprint $table) {
-            $table->dropColumn('lecturer_name');
+            // Check if the 'lecturer_name' column exists before dropping it
+            if (Schema::hasColumn('subjects', 'lecturer_name')) {
+                $table->dropColumn('lecturer_name');
+            }
         });
     }
 };

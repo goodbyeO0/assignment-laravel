@@ -15,6 +15,8 @@ return new class extends Migration
             $table->increments ('id');
             $table->string('subject_code');
             $table->string('subject_name');
+            $table->string('lecturer_name')->nullable();
+            $table->timestamps();
         });
     }
 

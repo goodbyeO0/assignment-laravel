@@ -51,3 +51,7 @@ Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, '
 Route::get('/halls', [App\Http\Controllers\HallController::class, 'index'])->name('halls.index');
 Route::get('/halls/create',[App\Http\Controllers\HallController::class, 'create'])->name('halls.create');
 Route::post('/halls', [App\Http\Controllers\HallController::class, 'store'])->name('halls.store');
+
+//day
+Route::get('/days', [App\Http\Controllers\DayController::class, 'index'])->name('days.index');
+Route::get('/days/{day}', [App\Http\Controllers\DayController::class, 'show'])->name('days.show');

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Subject;
+use App\Models\Day;
+use App\Models\Hall;
 
 class Timetable extends Model
 {
@@ -30,6 +33,11 @@ class Timetable extends Model
 
     public function hall()
     {
-        return $this->belongsTo(Hall::class);
+        return $this->belongsTo('App\Models\Hall', 'hall_id');
     }
+
+    public function day(){
+        return $this->belongsTo(Day::class);
+    }
+
 }

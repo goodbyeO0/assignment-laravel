@@ -29,6 +29,7 @@ Route::put('/subjects/{subject}', [App\Http\Controllers\SubjectController::class
 Route::delete('/subjects/{subject}', [App\Http\Controllers\SubjectController::class, 'destroy'])->name('subjects.destroy');
 
 //timetable
+Route::resource('timetables', App\Http\Controllers\TimetableController::class);
 Route::get('/timetables', [App\Http\Controllers\TimetableController::class, 'index'])->name('timetables.index');
 Route::get('/timetables/create',[App\Http\Controllers\TimetableController::class, 'create'])->name('timetables.create');
 Route::post('/timetables', [App\Http\Controllers\TimetableController::class, 'store'])->name('timetables.store');

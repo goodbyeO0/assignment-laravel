@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
@@ -12,7 +11,6 @@ class StudentController extends Controller
     public function index()
     {
         $students = User::all();
-        // dd($students);
         return view('students.index', compact('students'));
     }
 
@@ -25,18 +23,18 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8'
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'name' => $request->name,
-            'password' => Hash::make($request->password),
             'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('students.index')
-                        ->with('success','Student created successfully.');
+                         ->with('success', 'Student created successfully.');
     }
 
     public function show(User $student)
@@ -53,7 +51,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
         ]);
 
         $student->name = $request->name;
@@ -67,14 +65,14 @@ class StudentController extends Controller
         $student->save();
 
         return redirect()->route('students.index')
-                        ->with('success', 'Student updated successfully');
+                         ->with('success', 'Student updated successfully');
     }
 
-    public function destroy(User $student) {
+    public function destroy(User $student)
+    {
         $student->delete();
-  
+
         return redirect()->route('students.index')
-                        ->with('success','Student deleted successfully');
+                         ->with('success', 'Student deleted successfully');
     }
-    
 }

@@ -19,19 +19,17 @@
 <table class="table table-bordered">
     <tr>
         <th>No</th>
-        <th>Hall Number</th>
-        <th>Building</th>
+        <th>Lecturer Hall Name</th>
+        <th>Lecturer Hall Place</th>
         <th>Capacity</th>
-        <th>Type</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($halls as $hall)
     <tr>
         <td>{{ $hall->id }}</td>
-        <td>{{ $hall->number }}</td>
-        <td>{{ $hall->building }}</td>
+        <td>{{ $hall->lecture_hall_name }}</td>
+        <td>{{ $hall->lecture_hall_place }}</td>
         <td>{{ $hall->capacity }}</td>
-        <td>{{ $hall->type }}</td>
         <td>
             <form action="{{ route('halls.destroy',$hall->id) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('halls.show',$hall->id) }}">Show</a>

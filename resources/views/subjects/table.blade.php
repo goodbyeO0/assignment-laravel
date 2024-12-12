@@ -5,7 +5,7 @@
             <h2>List of Subjects</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('subjects.create') }}"> Add New Subject</a>
+            <a class="btn btn-success mb-2" href="{{ route('subjects.create') }}"> Add New Subject</a>
         </div>
     </div>
 </div>
@@ -21,7 +21,7 @@
         <th>No</th>
         <th>Subject Code</th>
         <th>Subject Name</th>
-        <th>Credit Hours</th>
+        <th>Lecturer's Name</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($subjects as $subject)

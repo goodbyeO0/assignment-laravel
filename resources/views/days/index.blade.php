@@ -7,13 +7,13 @@
             <h2>Days List</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('days.create') }}"> Add New Day</a>
+            <a class="btn btn-success mb-2" href="{{ route('days.create') }}"> Add New Day</a>
         </div>
     </div>
 </div>
 
 @if ($message = Session::get('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success mb-2">
         <p>{{ $message }}</p>
     </div>
 @endif

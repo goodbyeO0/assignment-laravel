@@ -5,7 +5,7 @@
             <h2>List of Halls</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('halls.create') }}"> Add New Hall</a>
+            <a class="btn btn-success mb-2" href="{{ route('halls.create') }}"> Add New Hall</a>
         </div>
     </div>
 </div>

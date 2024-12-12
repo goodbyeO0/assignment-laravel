@@ -6,13 +6,13 @@
                 <h2>Student Timetable</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('timetables.create') }}"> Add New Timetable</a>
+                <a class="btn btn-success mb-2" href="{{ route('timetables.create') }}"> Add New Timetable</a>
             </div>
         </div>
     </div>
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mb-2">
             <p>{{ $message }}</p>
         </div>
     @endif
@@ -23,6 +23,7 @@
             <th>Day</th>
             <th>Subject</th>
             <th>Hall</th>
+            <th>Lecturer's Name</th>
             <th>Time From</th>
             <th>Time To</th>
             <th width="280px">Action</th>
@@ -33,6 +34,7 @@
             <td>{{ $t->day ? $t->day->day_name : 'No Day Assigned' }}</td>
             <td>{{ $t->subject ? $t->subject->subject_code . ' - ' . $t->subject->subject_name : 'No Subject Assigned' }}</td>
             <td>{{ $t->hall ? $t->hall->lecture_hall_name : 'No Hall Assigned' }}</td>
+            <td>{{ $t->subject ? $t->subject->lecturer_name : 'No Lecturer Assigned' }}</td>
             <td>{{ $t->time_from }}</td>
             <td>{{ $t->time_to }}</td>
             <td>

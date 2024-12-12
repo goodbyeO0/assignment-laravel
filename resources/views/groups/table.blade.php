@@ -5,7 +5,7 @@
             <h2>List of Groups</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('groups.create') }}"> Add New Group</a>
+            <a class="btn btn-success mb-2" href="{{ route('groups.create') }}"> Add New Group</a>
         </div>
     </div>
 </div>

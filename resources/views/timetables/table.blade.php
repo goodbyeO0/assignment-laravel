@@ -5,7 +5,7 @@
             <h2>Timetable Schedule</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('timetables.create') }}"> Add New Schedule</a>
+            <a class="btn btn-success mb-2" href="{{ route('timetables.create') }}"> Add New Schedule</a>
         </div>
     </div>
 </div>
@@ -22,6 +22,7 @@
         <th>Subject</th>
         <th>Group</th>
         <th>Hall</th>
+        <th>Lecturer's Name</th>
         <th>Day</th>
         <th>Start Time</th>
         <th>End Time</th>
@@ -33,6 +34,7 @@
         <td>{{ $schedule->subject->name }}</td>
         <td>{{ $schedule->group->name }}</td>
         <td>{{ $schedule->hall->number }}</td>
+        <td>{{ $schedule->subject->lecturer_name }}</td>
         <td>{{ $schedule->day }}</td>
         <td>{{ $schedule->start_time }}</td>
         <td>{{ $schedule->end_time }}</td>

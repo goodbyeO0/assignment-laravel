@@ -57,4 +57,12 @@ Route::put('/halls/{hall}', [App\Http\Controllers\HallController::class, 'update
 Route::delete('/halls/{hall}', [App\Http\Controllers\HallController::class, 'destroy'])->name('halls.destroy'); // Ensure this line is present
 
 //days
-Route::resource('days', App\Http\Controllers\DayController::class);
+// Route::resource('days', App\Http\Controllers\DayController::class);
+Route::get('/days', [App\Http\Controllers\DayController::class, 'index'])->name('days.index'); // Display a listing of the days
+Route::get('/days/create', [App\Http\Controllers\DayController::class, 'create'])->name('days.create'); // Show the form for creating a new day
+Route::post('/days', [App\Http\Controllers\DayController::class, 'store'])->name('days.store'); // Store a newly created day
+Route::get('/days/{day}', [App\Http\Controllers\DayController::class, 'show'])->name('days.show'); // Display the specified day
+Route::get('/days/{day}/edit', [App\Http\Controllers\DayController::class, 'edit'])->name('days.edit'); // Show the form for editing the specified day
+Route::put('/days/{day}', [App\Http\Controllers\DayController::class, 'update'])->name('days.update'); // Update the specified day
+Route::put('/days/{day}/edit', [App\Http\Controllers\DayController::class, 'update'])->name('days.update'); // Update the specified day
+Route::delete('/days/{day}', [App\Http\Controllers\DayController::class, 'destroy'])->name('days.destroy'); // Remove the specified day

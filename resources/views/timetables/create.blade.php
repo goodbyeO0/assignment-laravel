@@ -27,32 +27,58 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Day:</strong>
-                    <input type="text" name="day" class="form-control" placeholder="Day">
+                    <strong>Subject:</strong>
+                    <select name="subject_id" class="form-control" required>
+                        <option value="">Select Subject</option>
+                        @foreach ($subjects as $subject)
+                            <option value="{{ $subject->id }}">{{ $subject->subject_code }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Subject:</strong>
-                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+                    <strong>Day:</strong>
+                    <select name="day_id" class="form-control" required>
+                        <option value="">Select Day</option>
+                        @foreach ($days as $day)
+                            <option value="{{ $day->id }}">{{ $day->day_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Hall:</strong>
-                    <input type="text" name="hall" class="form-control" placeholder="Hall">
+                    <select name="hall_id" class="form-control" required>
+                        <option value="">Select Hall</option>
+                        @foreach ($halls as $hall)
+                            <option value="{{ $hall->id }}">{{ $hall->lecture_hall_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Group:</strong>
+                    <select name="group_id" class="form-control" required>
+                        <option value="">Select Group</option>
+                        @foreach ($groups as $group)
+                            <option value="{{ $group->id }}">{{ $group->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Time From:</strong>
-                    <input type="time" name="time_from" class="form-control">
+                    <input type="time" name="time_from" class="form-control" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Time To:</strong>
-                    <input type="time" name="time_to" class="form-control">
+                    <input type="time" name="time_to" class="form-control" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

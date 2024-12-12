@@ -11,10 +11,10 @@ class DayController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $days = Day::all();
-        return view('days.index', compact('days'));
-    }
+{
+    $days = Day::all(); // Fetch all days
+    return view('days.index', compact('days')); // Return the view with the days data
+}
 
     /**
      * Show the form for creating a new resource.

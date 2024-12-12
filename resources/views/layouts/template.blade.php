@@ -141,6 +141,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('days.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Days</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('timetables.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Timetable</p>

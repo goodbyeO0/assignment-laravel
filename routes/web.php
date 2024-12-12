@@ -49,15 +49,12 @@ Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, '
 
 //halls
 Route::get('/halls', [App\Http\Controllers\HallController::class, 'index'])->name('halls.index');
-Route::get('/halls/create',[App\Http\Controllers\HallController::class, 'create'])->name('halls.create');
-Route::post('/halls', [App\Http\Controllers\HallController::class, 'store'])->name('halls.store');
-
-
-//day
-Route::get('/halls', [App\Http\Controllers\HallController::class, 'index'])->name('halls.index');
 Route::get('/halls/create', [App\Http\Controllers\HallController::class, 'create'])->name('halls.create');
 Route::post('/halls', [App\Http\Controllers\HallController::class, 'store'])->name('halls.store');
 Route::get('/halls/{hall}', [App\Http\Controllers\HallController::class, 'show'])->name('halls.show');
 Route::get('/halls/{hall}/edit', [App\Http\Controllers\HallController::class, 'edit'])->name('halls.edit');
 Route::put('/halls/{hall}', [App\Http\Controllers\HallController::class, 'update'])->name('halls.update');
 Route::delete('/halls/{hall}', [App\Http\Controllers\HallController::class, 'destroy'])->name('halls.destroy'); // Ensure this line is present
+
+//days
+Route::resource('days', App\Http\Controllers\DayController::class);

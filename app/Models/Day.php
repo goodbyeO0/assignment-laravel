@@ -11,6 +11,9 @@ class Day extends Model
 
     public $table = 'days';
     
+    // Disable timestamps
+    public $timestamps = false;
+    
     protected $fillable = [
         'day_name',
     ];

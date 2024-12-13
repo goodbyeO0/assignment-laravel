@@ -35,6 +35,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Part:</strong>
+                <input type="number" name="part" value="{{ $group->part }}" class="form-control" placeholder="Part">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Capacity:</strong>
                 <input type="number" name="capacity" value="{{ $group->capacity }}" class="form-control" placeholder="Capacity" required>
             </div>

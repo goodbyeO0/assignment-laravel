@@ -35,7 +35,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Part:</strong>
-                <input type="text" name="part" class="form-control" placeholder="Part">
+                <input type="number" name="part" class="form-control" placeholder="Part">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

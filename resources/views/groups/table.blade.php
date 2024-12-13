@@ -20,6 +20,7 @@
     <tr>
         <th>No</th>
         <th>Group Name</th>
+        <th>Part</th>
         <th>Capacity</th>
         <th>Department</th>
         <th width="280px">Action</th>
@@ -28,6 +29,7 @@
     <tr>
         <td>{{ $group->id }}</td>
         <td>{{ $group->name }}</td>
+        <td>{{ $group->part}}</td>
         <td>{{ $group->capacity }}</td>
         <td>{{ $group->department }}</td>
         <td>

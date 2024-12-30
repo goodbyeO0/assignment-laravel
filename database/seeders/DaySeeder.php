@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Day; // Add this line to import the Day model
+use App\Models\Day;
 
 class DaySeeder extends Seeder
 {
@@ -13,17 +13,18 @@ class DaySeeder extends Seeder
      */
     public function run(): void
     {
-        Day::create(['day_name' => 'Monday']);
-        Day::create(['day_name' => 'Tuesday']);
-        Day::create(['day_name' => 'Wednesday']);
-        Day::create(['day_name' => 'Thursday']);
-        Day::create(['day_name' => 'Friday']);
-        Day::create(['day_name' => 'Saturday']);
-        Day::create(['day_name' => 'Sunday']);
+        $days = [
+            ['day_name' => 'Monday'],
+            ['day_name' => 'Tuesday'],
+            ['day_name' => 'Wednesday'],
+            ['day_name' => 'Thursday'],
+            ['day_name' => 'Friday'],
+            ['day_name' => 'Saturday'],
+            ['day_name' => 'Sunday']
+        ];
 
-        foreach ($day_seed as $day_seed)
-        {
-            Day::firstOrCreate($day_seed);
+        foreach ($days as $day) {
+            Day::firstOrCreate($day);
         }
     }
 }

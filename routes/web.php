@@ -1,6 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\HallController;
+use App\Http\Controllers\DayController;
+use App\Http\Controllers\YouTubeController;
+use App\Http\Controllers\TMDBController;
+use App\Http\Controllers\Web3Controller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,3 +77,21 @@ Route::get('/days/{day}/edit', [App\Http\Controllers\DayController::class, 'edit
 Route::put('/days/{day}', [App\Http\Controllers\DayController::class, 'update'])->name('days.update'); // Update the specified day
 Route::put('/days/{day}/edit', [App\Http\Controllers\DayController::class, 'update'])->name('days.update'); // Update the specified day
 Route::delete('/days/{day}', [App\Http\Controllers\DayController::class, 'destroy'])->name('days.destroy'); // Remove the specified day
+
+Route::get('/youtube', [App\Http\Controllers\YouTubeController::class, 'index']);
+
+Route::get('/movies', [App\Http\Controllers\TMDBController::class, 'index']);
+Route::get('/movies/search', [App\Http\Controllers\TMDBController::class, 'search']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+    Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
+    Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
+});
+
+// Web3 Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/web3/connect', [Web3Controller::class, 'connect'])->name('web3.connect');
+    Route::post('/web3/save-wallet', [Web3Controller::class, 'saveWalletAddress'])->name('web3.save-wallet');
+    Route::post('/web3/disconnect', [Web3Controller::class, 'disconnect'])->name('web3.disconnect');
+});

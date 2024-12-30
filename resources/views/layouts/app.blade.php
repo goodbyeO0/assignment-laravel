@@ -12,6 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -67,6 +70,11 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('web3.connect') }}">
+                                <i class="fas fa-wallet"></i> Connect Wallet
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -76,5 +84,8 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts Stack -->
+    @stack('scripts')
 </body>
 </html>

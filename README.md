@@ -1,66 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel School Management System with Web3 Integration
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a Laravel-based school management system that includes features for managing timetables, subjects, halls, and groups, along with Web3 wallet integration for Ethereum transactions.
 
-## About Laravel
+## Prerequisites
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   PHP >= 8.1
+-   Composer
+-   Node.js & NPM
+-   MySQL
+-   MetaMask browser extension
+-   Git
+-   Laragon (recommended) or other local development environment
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clone the repository:
 
-## Learning Laravel
+```bash
+git clone <repository-url>
+cd laravel_asignment
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Install PHP dependencies:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+composer install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Install and compile frontend dependencies:
 
-## Laravel Sponsors
+```bash
+npm install
+npm run dev
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. Create a copy of the environment file:
 
-### Premium Partners
+```bash
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+6. Configure your database in `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+7. Run migrations:
+
+```bash
+php artisan migrate
+```
+
+8. Create storage link:
+
+```bash
+php artisan storage:link
+```
+
+## Features
+
+### 1. School Management
+
+-   **Students Management**: CRUD operations for student records
+-   **Subjects Management**: Add, edit, and manage course subjects
+-   **Halls Management**: Manage lecture halls and their capacity
+-   **Groups Management**: Organize students into groups
+-   **Timetable Management**: Create and manage class schedules
+
+### 2. Web3 Integration
+
+-   Connect MetaMask wallet
+-   Send ETH on Sepolia testnet
+-   View transaction history
+-   Direct links to Etherscan for transactions and addresses
+
+## Usage
+
+### School Management
+
+1. **Students**
+
+    - Access at: `/students`
+    - Add new students: `/students/create`
+    - Edit existing students: `/students/{id}/edit`
+
+2. **Subjects**
+
+    - Access at: `/subjects`
+    - Add new subjects: `/subjects/create`
+    - Manage subject details and lecturer assignments
+
+3. **Halls**
+
+    - Access at: `/halls`
+    - Manage lecture halls and capacities
+
+4. **Groups**
+
+    - Access at: `/groups`
+    - Create and manage student groups
+
+5. **Timetables**
+    - Access at: `/timetables`
+    - Create and manage class schedules
+
+### Web3 Features
+
+1. **Connect Wallet**
+
+    - Click "Connect Wallet" in the navigation
+    - Approve MetaMask connection
+    - System will automatically switch to Sepolia testnet
+
+2. **Send ETH**
+
+    - Ensure you have Sepolia ETH (get from a faucet)
+    - Enter recipient address
+    - Enter amount in ETH
+    - Click "Send ETH"
+    - Approve transaction in MetaMask
+
+3. **View Transactions**
+    - All transactions are listed in the "Recent Transactions" section
+    - Click "View on Etherscan" to see transaction details
+    - Your wallet address has a direct link to Etherscan
+
+## Important Notes
+
+1. **MetaMask Setup**
+
+    - Install MetaMask browser extension
+    - Create or import a wallet
+    - Switch to Sepolia testnet
+    - Get test ETH from a Sepolia faucet
+
+2. **Security**
+
+    - Never share your private keys
+    - Use test networks for development
+    - Keep your MetaMask wallet secure
+
+3. **Development**
+    - Run `npm run dev` during development
+    - Use `php artisan serve` if not using Laragon
+    - Check browser console for Web3 debugging
+
+## Troubleshooting
+
+1. **Database Issues**
+
+    - Ensure MySQL is running
+    - Check database credentials in `.env`
+    - Run `php artisan migrate:fresh` if needed
+
+2. **Web3 Issues**
+
+    - Ensure MetaMask is installed and unlocked
+    - Verify you're on Sepolia testnet
+    - Check if you have enough Sepolia ETH
+
+3. **Storage Issues**
+    - Run `php artisan storage:link`
+    - Ensure proper permissions on storage directory
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For support, please create an issue in the repository or contact the development team.

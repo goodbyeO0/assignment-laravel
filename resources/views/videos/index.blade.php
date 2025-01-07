@@ -17,11 +17,31 @@
                         </div>
                     @endif
 
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     @if($videos->count() > 0)
                         <div class="list-group">
                             @foreach($videos as $video)
                                 <div class="list-group-item">
-                                    <h5 class="mb-1">{{ $video->title }}</h5>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="mb-0">{{ $video->title }}</h5>
+                                        <div class="btn-group">
+                                            <a href="{{ route('videos.edit', $video) }}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form action="{{ route('videos.destroy', $video) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this video?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <p class="mb-1">Original filename: {{ $video->original_name }}</p>
                                     <small class="text-muted">Uploaded: {{ $video->created_at->diffForHumans() }}</small>
                                     <video width="100%" controls class="mt-2">

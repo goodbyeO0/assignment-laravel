@@ -83,10 +83,18 @@ Route::get('/youtube', [App\Http\Controllers\YouTubeController::class, 'index'])
 Route::get('/movies', [App\Http\Controllers\TMDBController::class, 'index']);
 Route::get('/movies/search', [App\Http\Controllers\TMDBController::class, 'search']);
 
+// Public Video Routes
+Route::get('/gallery', [VideoController::class, 'publicIndex'])->name('videos.public');
+Route::get('/gallery/user/{userId}', [VideoController::class, 'userGallery'])->name('videos.gallery');
+
+// Authenticated Video Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
     Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
+    Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
+    Route::put('/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
+    Route::delete('/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
 });
 
 // Web3 Routes

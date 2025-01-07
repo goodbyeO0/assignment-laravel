@@ -18,10 +18,68 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Styles -->
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .navbar {
+            background: #ffffff !important;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #333 !important;
+        }
+
+        .navbar-toggler {
+            border-color: #e0e0e0;
+        }
+
+        .navbar-toggler-icon {
+            filter: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .card-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        .dropdown-menu {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .dropdown-item {
+            color: #333 !important;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #000 !important;
+        }
+    </style>
+    @yield('styles')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -33,7 +91,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('videos.public') }}">
+                                <i class="fas fa-film"></i> Video Gallery
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -80,7 +142,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
